@@ -1,0 +1,36 @@
+<DefaultWindow xmlns="https://spacestation14.io"
+               MinWidth="285"
+               Title="{Loc 'main-menu-multiplayer-title'}">
+    <BoxContainer Name="VBox"
+                  Orientation="Vertical"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  HorizontalExpand="True"
+                  VerticalExpand="True"
+                  StyleIdentifier="mainMenuVBox">
+        <GridContainer
+            Columns="2"
+            HorizontalExpand="True">
+            
+            <Label Text="{Loc 'main-menu-multiplayer-username-label'}" />
+            <LineEdit Name="UsernameBox"
+                      Access="Public"
+                      PlaceHolder="{Loc 'main-menu-multiplayer-username-text'}"
+                      MinWidth="180"
+                      HorizontalExpand="True"/>
+            
+            <Label Text="{Loc 'main-menu-multiplayer-address-label'}"/>
+            <LineEdit Name="AddressBox"
+                      Access="Public"
+                      Text="localhost"
+                      PlaceHolder="server address:port"
+                      MinWidth="180"
+                      HorizontalExpand="True"/>
+        </GridContainer>
+        <Button Name="DirectConnectButton"
+                Access="Public"
+                Text="{Loc 'main-menu-multiplayer-direct-connect-button'}"
+                TextAlign="Center"
+                StyleIdentifier="mainMenu"/>
+    </BoxContainer>
+</DefaultWindow>

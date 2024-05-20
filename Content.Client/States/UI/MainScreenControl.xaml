@@ -1,0 +1,31 @@
+<Control xmlns="https://spacestation14.io">
+    <BoxContainer Name="VBox"
+                  Orientation="Vertical"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  HorizontalExpand="True"
+                  VerticalExpand="True"
+                  StyleIdentifier="mainMenuVBox"
+                  SeparationOverride="3">
+        <Button Name="SingleplayerButton"
+                Access="Public"
+                Text="{Loc 'main-menu-singleplayer-button'}"
+                TextAlign="Center"
+                StyleIdentifier="mainMenu"/>
+        <Button Name="MultiplayerButton"
+                Access="Public"
+                Text="{Loc 'main-menu-multiplayer-button'}"
+                TextAlign="Center"
+                StyleIdentifier="mainMenu"/>
+        <Button Name="OptionsButton"
+                Access="Public"
+                Text="{Loc 'main-menu-options-button'}"
+                TextAlign="Center"
+                StyleIdentifier="mainMenu"/>
+        <Button Name="QuitButton"
+                Access="Public"
+                Text="{Loc 'main-menu-quit-button'}"
+                TextAlign="Center"
+                StyleIdentifier="mainMenu"/>
+    </BoxContainer>
+</Control>

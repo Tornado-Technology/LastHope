@@ -1,8 +1,7 @@
+using Content.Client.States;
 using JetBrains.Annotations;
-using Robust.Client;
 using Robust.Client.Graphics;
 using Robust.Client.State;
-using Robust.Client.UserInterface.States;
 using Robust.Shared.ContentPack;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
@@ -50,7 +49,7 @@ public sealed class EntryPoint : GameClient
 
         // DEVNOTE: It's recommended to look at how this works! It's for debug purposes and you probably want something prettier for the final game.
         // Additionally, state manager is the primary way you'll be changing between UIScreen instances.
-        stateManager.RequestStateChange<DebugBuiltinConnectionScreenState>();
+        stateManager.RequestStateChange<MainScreenState>();
 
         // DEVNOTE: Further setup...
         //var client = IoCManager.Resolve<IBaseClient>();
