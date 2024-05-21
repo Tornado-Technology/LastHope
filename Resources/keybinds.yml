@@ -1,5 +1,5 @@
-﻿version: 1 # Currently unused.
-binds: # These are all the current engine keybinds.
+﻿version: 1
+binds:
   - function: UIClick
     type: State
     key: MouseLeft
@@ -39,6 +39,10 @@ binds: # These are all the current engine keybinds.
   - function: Walk
     type: State
     key: Shift
+  - function: Jump
+    type: State
+    key: Space
+  # Editor functions
   - function: EditorLinePlace
     type: State
     key: MouseLeft
@@ -60,6 +64,7 @@ binds: # These are all the current engine keybinds.
   - function: EditorRotateObject
     type: State
     key: MouseMiddle
+  # Text functions
   - function: TextCursorSelect
     type: State
     key: MouseLeft

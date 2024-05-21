@@ -1,0 +1,14 @@
+- type: entity
+  id: Player
+  name: player
+  components:
+    - type: Sprite
+      sprite: /Textures/test.rsi
+      state: test
+    - type: Input
+      context: player
+    - type: Physics
+      bodyType: KinematicController
+      bodyStatus: InAir
+    - type: Eye
+    - type: MovementSpeed
