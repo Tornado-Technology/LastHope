@@ -4,5 +4,8 @@ namespace Content.Client.Movement;
 
 public sealed class MovementController : SharedMovementController
 {
-    
+    public override void Initialize()
+    {
+        base.Initialize();
+    }
 }
