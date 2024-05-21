@@ -2,6 +2,6 @@
 
 namespace Content.Server.Movement;
 
-public sealed class MoverController : SharedMovementController
+public sealed class MovementController : SharedMovementController
 {
 }
