@@ -1,30 +1,23 @@
-﻿using Content.Shared.Movement.Handlers;
-using Robust.Shared.Input;
-using Robust.Shared.Input.Binding;
+﻿using Content.Shared.Movement.Components;
 using Robust.Shared.Physics.Controllers;
+using Robust.Shared.Timing;
 
 namespace Content.Shared.Movement;
 
-public abstract class SharedMovementController : VirtualController
+public abstract partial class SharedMovementController : VirtualController
 {
-    [Dependency] private readonly ILogManager _log = default!;
-
-    private ISawmill _sawmill = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
+    
+    private EntityQuery<MovementComponent> _movementQuery;
+    private EntityQuery<MovementSpeedComponent> _movementSpeedQuery;
     
     public override void Initialize()
     {
         base.Initialize();
 
-        _sawmill = _log.GetSawmill(SawmillName);
+        _movementQuery = GetEntityQuery<MovementComponent>();
+        _movementSpeedQuery = GetEntityQuery<MovementSpeedComponent>();
         
-        CommandBinds.Builder
-            .Bind(EngineKeyFunctions.MoveLeft, new MovementHorizontalCmdHandler(this, Direction.West))
-            .Bind(EngineKeyFunctions.MoveRight, new MovementHorizontalCmdHandler(this, Direction.East))
-            .Register<SharedMovementController>();
-    }
-
-    public void HandleHorizontal(EntityUid entityUid, Direction direction, bool state)
-    {
-        _sawmill.Info($"{state}");
+        InitializeInput();
     }
 }

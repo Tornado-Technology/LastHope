@@ -20,7 +20,7 @@ public sealed class MovementHorizontalCmdHandler : InputCmdHandler
         if (session?.AttachedEntity is not { } entity) 
             return false;
         
-        _controller.HandleHorizontal(entity, _direction, message.State == BoundKeyState.Down);
+        _controller.HandleHorizontal(entity, _direction, message.SubTick, message.State == BoundKeyState.Down);
         return false;
     }
 }
