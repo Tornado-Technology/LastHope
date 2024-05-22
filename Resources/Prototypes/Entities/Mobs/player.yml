@@ -9,6 +9,12 @@
       context: player
     - type: Physics
       bodyType: KinematicController
-      bodyStatus: InAir
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeCircle
+            radius: 0.35
     - type: Eye
+    - type: Movement
     - type: MovementSpeed

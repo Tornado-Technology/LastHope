@@ -85,7 +85,47 @@ public abstract partial class SharedMovementController
         SetMoveInput(movement, buttons);
     }
 
-    private void SetMoveInput(Entity<MovementComponent> movement, MoveButtons buttons)
+    private Vector2 GetVelocityInput(Entity<MovementComponent> movement)
+    {
+        var direction = GetVectorFromButtons(movement.Comp.HeldMoveButtons);
+        
+        if (!_timing.InSimulation)
+        {
+            // Outside of simulation we'll be running client predicted movement per-frame.
+            // So return a full-length vector as if it's a full tick.
+            // Physics system will have the correct time step anyways.
+            return direction;
+        }
+
+        Vector2 walk;
+        Vector2 sprint;
+        float remainingFraction;
+
+        if (movement.Comp.LastInputTick <= _timing.CurTick)
+        {
+            walk = Vector2.Zero;
+            sprint = Vector2.Zero;
+            
+            remainingFraction = 1;
+        }
+        else
+        {
+            walk = movement.Comp.CurTickWalkMovement;
+            sprint = movement.Comp.CurTickSprintMovement;
+            
+            remainingFraction = (ushort.MaxValue - movement.Comp.LastInputSubTick) / (float)ushort.MaxValue;
+        }
+
+        direction *= remainingFraction;
+        return (movement.Comp.Sprinting ? walk : sprint) + direction;
+    }
+
+    private Vector2 GetVelocityInput(Entity<MovementComponent> movement, float walkSpeed, float sprintSpeed)
+    {
+        return GetVelocityInput(movement) * (movement.Comp.Sprinting ? sprintSpeed : walkSpeed);
+    } 
+
+    protected void SetMoveInput(Entity<MovementComponent> movement, MoveButtons buttons)
     {
         if (movement.Comp.HeldMoveButtons == buttons)
             return;
@@ -108,14 +148,16 @@ public abstract partial class SharedMovementController
 
     private static Vector2 GetVectorFromButtons(MoveButtons buttons)
     {
-        var vector = Vector2.Zero;
+        var x = 0;
+        var y = 0;
+        
+        x -= buttons.HasFlag(MoveButtons.Left) ? 1 : 0;
+        x += buttons.HasFlag(MoveButtons.Right) ? 1 : 0;
+        y -= buttons.HasFlag(MoveButtons.Down) ? 1 : 0;
+        y += buttons.HasFlag(MoveButtons.Up) ? 1 : 0;
 
-        vector.X -= buttons.HasFlag(MoveButtons.Left) ? 1 : 0;
-        vector.X += buttons.HasFlag(MoveButtons.Right) ? 1 : 0;
-        vector.Y -= buttons.HasFlag(MoveButtons.Down) ? 1 : 0;
-        vector.Y += buttons.HasFlag(MoveButtons.Up) ? 1 : 0;
-
-        if (vector.LengthSquared() > 1.0e-6)
+        var vector = new Vector2(x, y);
+        if (vector.LengthSquared() <= 0)
             return vector;
             
         return vector.Normalized();
