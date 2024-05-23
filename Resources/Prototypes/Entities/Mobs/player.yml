@@ -4,6 +4,7 @@
   components:
     - type: Sprite
       sprite: /Textures/test.rsi
+      drawdepth: Mobs
       state: test
     - type: Input
       context: player
@@ -15,6 +16,11 @@
           shape:
             !type:PhysShapeCircle
             radius: 0.35
+          density: 100
+          mask:
+            - BlockMask
+          layer:
+            - BlockLayer
     - type: Eye
     - type: Movement
     - type: MovementSpeed

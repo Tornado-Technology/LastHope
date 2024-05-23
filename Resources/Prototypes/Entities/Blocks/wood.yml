@@ -1,0 +1,6 @@
+- type: entity
+  parent: BaseBlock
+  id: BlockWoodPlanks
+  components:
+    - type: Sprite
+      sprite: /Textures/Entities/Blocks/Wood/planks.rsi
