@@ -29,7 +29,7 @@ public sealed partial class EntitySpawningUIController
         return false;
     }
     
-    private void BuildEntityList(string search = "")
+    private void BuildEntityList()
     {
         _shownEntities.Clear();
         
@@ -40,9 +40,6 @@ public sealed partial class EntitySpawningUIController
         Window.PrototypeList.RemoveAllChildren();
         Window.SelectedButton = null;
         
-        // Always search case-insensitive, it often just gets in the way
-        search = search.ToLowerInvariant();
-
         foreach (var prototype in _prototypes.EnumeratePrototypes<EntityPrototype>())
         {
             if (prototype.Abstract)
@@ -51,7 +48,7 @@ public sealed partial class EntitySpawningUIController
             if (prototype.HideSpawnMenu)
                 continue;
 
-            if (!string.IsNullOrEmpty(search) && !DoesEntityMatchSearch(prototype, search))
+            if (!string.IsNullOrEmpty(_search) && !DoesEntityMatchSearch(prototype, _search))
                 continue;
 
             _shownEntities.Add(prototype);

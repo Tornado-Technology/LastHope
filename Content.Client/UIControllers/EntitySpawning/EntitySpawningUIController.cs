@@ -53,15 +53,18 @@ public sealed partial class EntitySpawningUIController : UIController, IOnStateC
     // The indices of the visible prototypes last time UpdateVisiblePrototypes was ran.
     // This is inclusive, so end is the index of the last prototype, not right after it.
     private (int start, int end) _lastEntityIndices;
+    private string _search = string.Empty;
     
     public override void Initialize()
     {
         base.Initialize();
+                
+        SubscribeLocalEvent<PrototypesReloadedEventArgs>(OnPrototypeReloaded);
         
-       
-
+        _placement.DirectionChanged += OnDirectionChanged;
+        _placement.PlacementChanged += ClearSelection;
     }
-
+    
     public void OnStateEntered(GameplayState state)
     {
         _inputManager.SetInputCommand(ContentKeyFunctions.ToggleEntitySpawnWindow, InputCmdHandler.FromDelegate(_ =>
@@ -75,6 +78,33 @@ public sealed partial class EntitySpawningUIController : UIController, IOnStateC
         CloseWindow();
     }
     
+    private void OnPrototypeReloaded(PrototypesReloadedEventArgs args)
+    {
+        BuildEntityList();
+    }
+    
+    private void OnDirectionChanged(object? sender, EventArgs args)
+    {
+        UpdateEntityDirectionLabel();
+    }
+
+    private void ClearSelection(object? sender, EventArgs args)
+    {
+        if (Window.SelectedButton != null)
+        {
+            Window.SelectedButton.ActualButton.Pressed = false;
+            Window.SelectedButton = null;
+        }
+
+        Window.EraseButton.Pressed = false;
+        Window.OverrideMenu.Disabled = false;
+    }
+    
+    private void UpdateEntityDirectionLabel()
+    {
+        Window.RotationLabel.Text = _placement.Direction.ToString();
+    }
+    
     private void ToggleWindow()
     {
         if (Window.IsOpen)
@@ -84,6 +114,9 @@ public sealed partial class EntitySpawningUIController : UIController, IOnStateC
         }
         
         Window.Open();
+        Window.SearchBar.GrabKeyboardFocus();
+        
+        UpdateEntityDirectionLabel();
     }
 
     private void CloseWindow()

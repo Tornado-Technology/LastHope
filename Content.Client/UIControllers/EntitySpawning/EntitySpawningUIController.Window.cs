@@ -44,6 +44,7 @@ public sealed partial class EntitySpawningUIController
     private void ClearPressed(BaseButton.ButtonEventArgs args)
     {
         _placement.Clear();
+        _search = string.Empty;
         Window.SearchBar.Clear();
         
         BuildEntityList();
@@ -53,8 +54,11 @@ public sealed partial class EntitySpawningUIController
     {
         _placement.Clear();
         
-        BuildEntityList(args.Text);
-        Window.ClearButton.Disabled = string.IsNullOrEmpty(args.Text);
+        // Always search case-insensitive, it often just gets in the way
+        _search = args.Text.ToLowerInvariant();
+        
+        BuildEntityList();
+        Window.ClearButton.Disabled = string.IsNullOrEmpty(_search);
     }
 
     private void OverrideSelected(OptionButton.ItemSelectedEventArgs args)
