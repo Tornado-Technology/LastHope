@@ -1,8 +1,9 @@
-﻿using Robust.Client.UserInterface.Controllers;
+﻿using Content.Client.UIControllers.MainMenu.UI;
+using Robust.Client.UserInterface.Controllers;
 
-namespace Content.Client.UI.Controllers;
+namespace Content.Client.UIControllers.MainMenu;
 
-public sealed class MultiplayerUiController : UIController
+public sealed class MultiplayerUIController : UIController
 {
     private MultiplayerMenu _window = default!;
 
@@ -41,7 +42,7 @@ public sealed class MultiplayerUiController : UIController
         if (_window is { Disposed: false })
             return;
 
-        _window = UIManager.CreateWindow<MultiplayerMenu>();
+        _window = UIManager.CreateWindow<UIControllers.MainMenu.UI.MultiplayerMenu>();
         _window.DirectConnectButton.OnPressed += _ =>
         {
             OnConnect?.Invoke(

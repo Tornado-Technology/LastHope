@@ -1,5 +1,5 @@
 ﻿using Content.Client.States.Main.UI;
-using Content.Client.UI.Controllers;
+using Content.Client.UIControllers.MainMenu;
 using Content.Shared.Utilities;
 using Robust.Client;
 using Robust.Client.UserInterface;
@@ -17,7 +17,7 @@ public sealed class MainScreenState : Robust.Client.State.State
     private ISawmill _sawmill = default!;
     
     private MainScreenControl _mainScreen = default!;
-    private MultiplayerUiController _multiplayerUiController = default!;
+    private MultiplayerUIController _multiplayerUiController = default!;
     
     protected override void Startup()
     {
@@ -26,7 +26,7 @@ public sealed class MainScreenState : Robust.Client.State.State
         _mainScreen = new MainScreenControl();
         _userInterface.StateRoot.AddChild(_mainScreen);
 
-        _multiplayerUiController = _userInterface.GetUIController<MultiplayerUiController>();
+        _multiplayerUiController = _userInterface.GetUIController<MultiplayerUIController>();
         _multiplayerUiController.OnConnect += TryConnect;
         
         _mainScreen.SingleplayerButton.OnPressed += SingleplayerButtonPressed;

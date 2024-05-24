@@ -2,7 +2,7 @@
 using Robust.Client.UserInterface.CustomControls;
 using Robust.Client.UserInterface.XAML;
 
-namespace Content.Client.UI;
+namespace Content.Client.UIControllers.MainMenu.UI;
 
 [GenerateTypedNameReferences]
 public sealed partial class MultiplayerMenu : DefaultWindow

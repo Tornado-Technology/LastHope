@@ -8,7 +8,6 @@
       state: full
       drawdepth: Blocks
     - type: Transform
-      anchored: true
     - type: Physics
       bodyType: Static
     - type: Fixtures
