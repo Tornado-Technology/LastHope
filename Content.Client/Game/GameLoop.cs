@@ -1,4 +1,5 @@
-﻿using Content.Client.Gameplay;
+﻿using Content.Client.States.Gameplay;
+using Content.Client.States.Lobby;
 using Content.Shared.Game;
 using Content.Shared.Game.Events;
 using Robust.Client.State;
@@ -18,12 +19,17 @@ public sealed class GameLoop : SharedGameLoop
 
         _sawmill = _log.GetSawmill(SawmillName);
 
+        SubscribeNetworkEvent<TickerJoinLobbyEvent>(JoinLobby);   
         SubscribeNetworkEvent<TickerJoinGameEvent>(JoinGame);   
     }
-    
+
+    private void JoinLobby(TickerJoinLobbyEvent message)
+    {
+        _state.RequestStateChange<LobbyState>();
+    }
+
     private void JoinGame(TickerJoinGameEvent message)
     {
-        _sawmill.Debug("Joined");
         _state.RequestStateChange<GameplayState>();
     }
 }

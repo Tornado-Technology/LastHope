@@ -1,11 +1,11 @@
-﻿using Content.Client.States.UI;
+﻿using Content.Client.States.Main.UI;
 using Content.Client.UI.Controllers;
 using Content.Shared.Utilities;
 using Robust.Client;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 
-namespace Content.Client.States;
+namespace Content.Client.States.Main;
 
 public sealed class MainScreenState : Robust.Client.State.State
 {

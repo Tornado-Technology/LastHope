@@ -22,8 +22,5 @@ public sealed partial class GameLoop
         
         var playerEntity = Spawn("Player", new MapCoordinates(Vector2.Zero, map));
         _playerManager.SetAttachedEntity(session, playerEntity);
-        
-        var client = session.Channel;
-        RaiseNetworkEvent(new TickerJoinGameEvent(), client);
     }
 }

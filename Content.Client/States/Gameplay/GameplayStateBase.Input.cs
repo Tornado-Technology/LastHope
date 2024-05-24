@@ -4,7 +4,7 @@ using Robust.Client.UserInterface.CustomControls;
 using Robust.Shared.Input;
 using Robust.Shared.Map;
 
-namespace Content.Client.Gameplay;
+namespace Content.Client.States.Gameplay;
 
 public abstract partial class GameplayStateBase
 {

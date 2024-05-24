@@ -1,4 +1,4 @@
-﻿using Content.Client.Gameplay;
+﻿using Content.Client.States.Gameplay;
 using Content.Shared.Input;
 using Robust.Client.Input;
 using Robust.Client.UserInterface.Controllers;

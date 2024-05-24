@@ -2,7 +2,7 @@
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.XAML;
 
-namespace Content.Client.States.UI;
+namespace Content.Client.States.Main.UI;
 
 [GenerateTypedNameReferences]
 public sealed partial class MainScreenControl : Control

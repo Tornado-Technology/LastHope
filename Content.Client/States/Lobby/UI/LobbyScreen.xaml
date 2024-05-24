@@ -1,0 +1,3 @@
+<ui:LobbyScreen 
+    xmlns:ui="clr-namespace:Content.Client.States.Lobby.UI">
+</ui:LobbyScreen>

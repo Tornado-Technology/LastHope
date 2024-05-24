@@ -6,7 +6,7 @@ using Robust.Client.UserInterface;
 using Robust.Shared.Map;
 using Robust.Shared.Timing;
 
-namespace Content.Client.Gameplay;
+namespace Content.Client.States.Gameplay;
 
 public abstract partial class GameplayStateBase : Robust.Client.State.State, IEntityEventSubscriber
 {
