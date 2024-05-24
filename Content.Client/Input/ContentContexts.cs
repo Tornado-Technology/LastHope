@@ -15,6 +15,9 @@ public static class ContentContexts
         common.AddFunction(EngineKeyFunctions.MoveLeft);
         common.AddFunction(EngineKeyFunctions.MoveRight);
         common.AddFunction(ContentKeyFunctions.Jump);
+        
+        common.AddFunction(ContentKeyFunctions.ToggleEntitySpawnWindow);
+        common.AddFunction(ContentKeyFunctions.ToggleTileSpawnWindow);
 
         var player = contexts.New(PlayerContextName, DefaultContextName);
     }

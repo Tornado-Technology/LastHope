@@ -6,4 +6,7 @@ namespace Content.Shared.Input;
 public static class ContentKeyFunctions
 {
     public static readonly BoundKeyFunction Jump = "Jump";
+    
+    public static readonly BoundKeyFunction ToggleEntitySpawnWindow = "ToggleEntitySpawnWindow";
+    public static readonly BoundKeyFunction ToggleTileSpawnWindow = "ToggleTileSpawnWindow";
 }

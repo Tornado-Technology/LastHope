@@ -42,6 +42,13 @@ binds:
   - function: Jump
     type: State
     key: Space
+  # Sandbox functions
+  - function: ToggleEntitySpawnWindow
+    type: State
+    key: F1
+  - function: ToggleTileSpawnWindow
+    type: State
+    key: F2
   # Editor functions
   - function: EditorLinePlace
     type: State
