@@ -1,3 +1,22 @@
 <ui:LobbyScreen 
+    xmlns ="https://spacestation14.io"
     xmlns:ui="clr-namespace:Content.Client.States.Lobby.UI">
+    <!-- Background -->
+    <TextureRect Name="Background" Access="Public" VerticalExpand="True" HorizontalExpand="True"
+        Stretch="KeepAspectCovered"/>
+    <!-- Main UI -->
+    <BoxContainer Name="MainContainer" VerticalExpand="True" HorizontalExpand="True"
+        Orientation="Horizontal">
+        <!-- Left panel -->
+        <BoxContainer Name="TopLeft" Orientation="Vertical">
+            <!-- Players -->
+            <ScrollContainer Name="PlayersContainer"/>
+            <!-- Chat -->
+            <!-- Join & Leave -->
+            <BoxContainer Orientation="Horizontal">
+                <Button Name="JoinButton" Text="{Loc 'lobby-button-join'}" Access="Public"/>
+                <Button Name="LeaveButton" Text="{Loc 'lobby-button-leave'}" Access="Public"/>
+            </BoxContainer>
+        </BoxContainer>
+    </BoxContainer>
 </ui:LobbyScreen>

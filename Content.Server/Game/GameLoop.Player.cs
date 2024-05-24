@@ -45,8 +45,8 @@ public sealed partial class GameLoop
     {
         RaiseNetworkEvent(new TickerJoinLobbyEvent(), session.Channel);
     }
-    
-    private void PlayerJoinGame(ICommonSession session)
+
+    public void PlayerJoinGame(ICommonSession session)
     {
         SpawnPlayer(session);
         RaiseNetworkEvent(new TickerJoinGameEvent(), session.Channel);
