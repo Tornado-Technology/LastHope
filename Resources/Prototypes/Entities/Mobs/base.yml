@@ -1,0 +1,34 @@
+- type: entity
+  parent:
+    - BaseMobMovement
+    - BaseMobPhysics
+  id: BaseMob
+  abstract: true
+
+# It also requires BaseMobPhysics, or configured Physics and Fixtures components
+- type: entity
+  id: BaseMobMovement
+  abstract: true
+  components:
+    - type: Input
+      context: player
+    - type: Movement
+    - type: MovementSpeed
+
+- type: entity
+  id: BaseMobPhysics
+  abstract: true
+  components:
+    - type: Physics
+      bodyType: KinematicController
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeCircle
+            radius: 0.35
+          density: 100
+          mask:
+            - MobMask
+          layer:
+            - MobLayer

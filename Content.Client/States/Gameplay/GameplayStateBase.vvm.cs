@@ -1,4 +1,4 @@
-﻿namespace Content.Client.Gameplay;
+﻿namespace Content.Client.States.Gameplay;
 
 public abstract partial class GameplayStateBase
 {

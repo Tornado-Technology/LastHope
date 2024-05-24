@@ -4,7 +4,7 @@ using Robust.Client.UserInterface.CustomControls;
 using Robust.Shared.Configuration;
 using Robust.Shared.Timing;
 
-namespace Content.Client.Gameplay;
+namespace Content.Client.States.Gameplay;
 
 public sealed class GameplayState : GameplayStateBase
 {

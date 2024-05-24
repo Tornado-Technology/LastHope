@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using Content.Shared.Game.Events;
+using JetBrains.Annotations;
 using Robust.Server.Player;
 using Robust.Shared.Enums;
 using Robust.Shared.Player;
@@ -32,11 +33,22 @@ public sealed partial class GameLoop
                 break;
             
             case SessionStatus.InGame:
-                SpawnPlayer(args.Session);
+                PlayerJoinLobby(args.Session);
                 break;
             
             default:
                 throw new ArgumentOutOfRangeException();
         }
+    }
+    
+    private void PlayerJoinLobby(ICommonSession session)
+    {
+        RaiseNetworkEvent(new TickerJoinLobbyEvent(), session.Channel);
+    }
+
+    public void PlayerJoinGame(ICommonSession session)
+    {
+        SpawnPlayer(session);
+        RaiseNetworkEvent(new TickerJoinGameEvent(), session.Channel);
     }
 }

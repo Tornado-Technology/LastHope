@@ -1,5 +1,6 @@
 using Content.Client.Input;
 using Content.Client.States;
+using Content.Client.States.Main;
 using JetBrains.Annotations;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
