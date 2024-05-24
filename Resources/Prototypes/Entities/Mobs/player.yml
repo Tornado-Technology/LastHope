@@ -1,4 +1,5 @@
 - type: entity
+  parent: BaseMob
   id: Player
   name: player
   components:
@@ -6,21 +7,4 @@
       sprite: /Textures/test.rsi
       drawdepth: Mobs
       state: test
-    - type: Input
-      context: player
-    - type: Physics
-      bodyType: KinematicController
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape:
-            !type:PhysShapeCircle
-            radius: 0.35
-          density: 100
-          mask:
-            - BlockMask
-          layer:
-            - BlockLayer
     - type: Eye
-    - type: Movement
-    - type: MovementSpeed
