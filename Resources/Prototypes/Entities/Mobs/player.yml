@@ -4,7 +4,7 @@
   name: player
   components:
     - type: Sprite
-      sprite: /Textures/test.rsi
+      sprite: /Textures/Entities/Mobs/Player/human.rsi
       drawdepth: Mobs
-      state: test
+      state: icon
     - type: Eye

@@ -20,7 +20,7 @@
   abstract: true
   components:
     - type: Physics
-      bodyType: KinematicController
+      bodyType: Dynamic
     - type: Fixtures
       fixtures:
         fix1:
