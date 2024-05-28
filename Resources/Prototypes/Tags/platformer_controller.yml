@@ -1,0 +1,5 @@
+# When the bottom of the bbox entity
+# contacts the PlatformerController of this object,
+# it will be reset to all jumps
+- type: Tag
+  id: Ground

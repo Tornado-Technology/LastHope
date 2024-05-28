@@ -1,19 +1,18 @@
 - type: entity
   parent:
-    - BaseMobMovement
+    - BaseMobPlatformerController
     - BaseMobPhysics
   id: BaseMob
   abstract: true
 
 # It also requires BaseMobPhysics, or configured Physics and Fixtures components
 - type: entity
-  id: BaseMobMovement
+  id: BaseMobPlatformerController
   abstract: true
   components:
     - type: Input
       context: player
-    - type: Movement
-    - type: MovementSpeed
+    - type: PlatformerController
 
 - type: entity
   id: BaseMobPhysics
@@ -21,13 +20,15 @@
   components:
     - type: Physics
       bodyType: Dynamic
+      friction: 0
     - type: Fixtures
       fixtures:
         fix1:
           shape:
             !type:PhysShapeCircle
-            radius: 0.35
+            radius: 0.5
           density: 100
+          friction: 0
           mask:
             - MobMask
           layer:
