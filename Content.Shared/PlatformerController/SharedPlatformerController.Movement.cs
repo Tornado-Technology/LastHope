@@ -1,6 +1,7 @@
 ﻿using System.Numerics;
 using System.Runtime.ExceptionServices;
 using Content.Shared.PlatformerController.Components;
+using Content.Shared.PlatformerController.Events;
 using Content.Shared.PlatformerController.Flags;
 
 namespace Content.Shared.PlatformerController;
@@ -29,8 +30,14 @@ public abstract partial class SharedPlatformerController
 
     private void SetMoveInput(Entity<PlatformerControllerComponent> entity, PlatformerControllerButtons buttons)
     {
+        if (entity.Comp.HeldButtons == buttons)
+            return;
+        
         entity.Comp.HeldButtons = buttons;
         entity.Comp.Movement = GetVector(buttons);
+
+        var ev = new MoveInputEvent(entity, entity.Comp.HeldButtons);
+        RaiseLocalEvent(entity, ref ev);
     }
 
     private static Vector2 GetVector(PlatformerControllerButtons buttons)

@@ -15,7 +15,10 @@ public sealed partial class PlatformerControllerComponent : Component
     [ViewVariables]
     public Vector2 Movement;
 
-    [ViewVariables]
+    /// <summary>
+    /// Requires additional synchronization that the animation would work on all clients correctly,
+    /// </summary>
+    [ViewVariables, AutoNetworkedField]
     public PlatformerControllerButtons HeldButtons;
 
     [ViewVariables]
@@ -24,6 +27,9 @@ public sealed partial class PlatformerControllerComponent : Component
     [ViewVariables, AutoNetworkedField]
     public bool Grounded;
 
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public float JumpEndEarlyGravityModifier = 0.7f;
+    
     [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
     public float JumpForce = 10;
     
@@ -39,7 +45,7 @@ public sealed partial class PlatformerControllerComponent : Component
     /// regardless of the parameters of the surface
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
-    public float Friction = 60;
+    public float Friction = 120;
 
     [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
     public float AirFriction = 30;
