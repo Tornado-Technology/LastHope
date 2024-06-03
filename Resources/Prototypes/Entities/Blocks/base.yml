@@ -7,7 +7,6 @@
     - type: Sprite
       state: full
       drawdepth: Blocks
-    - type: Transform
     - type: Physics
       bodyType: Static
     - type: Fixtures
@@ -17,6 +16,7 @@
             !type:PhysShapeAabb
             bounds: "-0.5, -0.5, 0.5, 0.5"
           density: 100
+          friction: 0
           mask:
             - BlockMask
           layer:

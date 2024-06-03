@@ -3,8 +3,27 @@
   id: Player
   name: player
   components:
-    - type: Sprite
-      sprite: /Textures/Entities/Mobs/Player/human.rsi
-      drawdepth: Mobs
-      state: icon
     - type: Eye
+      zoom: 0.5, 0.5
+    - type: Sprite
+      offset: 0, 0.25
+      drawdepth: Mobs
+      layers:
+        - map: [ enum.HumanoidVisualLayers.BArm ]
+          sprite: /Textures/Entities/Mobs/Player/Human/arm_back.rsi
+          state: idle
+        - map: [ enum.HumanoidVisualLayers.Body ]
+          sprite: /Textures/Entities/Mobs/Player/Human/body.rsi
+          state: idle
+        - map: [ enum.HumanoidVisualLayers.Head ]
+          sprite: /Textures/Entities/Mobs/Player/Human/head.rsi
+          state: idle
+        - map: [ enum.HumanoidVisualLayers.FArm ]
+          sprite: /Textures/Entities/Mobs/Player/Human/arm_front.rsi
+          state: idle
+    - type: AnimationPlatformerController
+      layers:
+        - FArm
+        - Head
+        - Body
+        - BArm
